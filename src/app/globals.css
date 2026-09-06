@@ -37,8 +37,8 @@ body {
   background-image: radial-gradient(var(--point-blue) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.08;
-  mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.4) 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.4) 0%, transparent 100%);
+  mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.4) 0%, transparent 100%);
 }
 
 .tilt-wrapper {
@@ -46,7 +46,7 @@ body {
   border-radius: 12px;
   transform-style: preserve-3d;
   will-change: transform;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .code-wrapper {
@@ -76,5 +76,7 @@ body {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .bg-spotlight { display: none !important; }
+  .bg-spotlight {
+    display: none !important;
+  }
 }
