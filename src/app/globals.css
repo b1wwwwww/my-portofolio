@@ -8,6 +8,13 @@
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-pixel: var(--font-pixel);
+}
+
+:root {
+  --bg-color: #0b1121;
+  --grid-dot: #1e293b;
+  --point-blue: #38bdf8;
 }
 
 html {
@@ -15,6 +22,59 @@ html {
 }
 
 body {
+  background-color: var(--bg-color);
+  color: #f8fafc;
+  background-image: radial-gradient(rgba(30, 41, 59, 0.35) 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.bg-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(var(--point-blue) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.08;
+  mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.4) 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.4) 0%, transparent 100%);
+}
+
+.tilt-wrapper {
+  position: relative;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.code-wrapper {
+  background: linear-gradient(135deg, #f472b6, #38bdf8, #facc15);
+  padding: 2px;
+  border-radius: 12px;
+  transform: translateZ(30px);
+}
+
+.code-inner {
   background-color: #0f172a;
-  color: #f1f5f9;
+  padding: 2rem;
+  border-radius: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 20;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .bg-spotlight { display: none !important; }
 }
