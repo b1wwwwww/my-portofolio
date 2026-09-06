@@ -12,18 +12,18 @@ function MarqueeRow({
 }) {
   const duplicated = [...items, ...items, ...items, ...items];
   return (
-    <div className="relative flex overflow-hidden">
+    <div className="relative flex overflow-hidden border-y border-slate-900 bg-slate-950">
       <motion.div
-        className="flex shrink-0 gap-3 py-2"
+        className="flex shrink-0"
         animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
       >
         {duplicated.map((tech, i) => (
           <span
             key={`${tech}-${i}`}
-            className="shrink-0 rounded-full border border-slate-700/60 bg-slate-800/60 px-5 py-2.5 text-sm font-medium tracking-wide text-slate-200 backdrop-blur"
+            className="shrink-0 border-r border-slate-900 px-12 py-8 text-2xl font-bold tracking-tighter text-slate-800 hover:text-white transition-colors md:text-4xl"
           >
-            {tech}
+            {tech.toUpperCase()}
           </span>
         ))}
       </motion.div>
@@ -33,30 +33,23 @@ function MarqueeRow({
 
 export default function TechStack() {
   return (
-    <section id="tech" className="border-y border-slate-800 bg-slate-900 py-14">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="tech" className="bg-slate-950">
+      <div className="mx-auto max-w-6xl px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex items-end justify-between gap-6"
+          viewport={{ once: true }}
+          className="flex items-baseline gap-4"
         >
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
-              Tech Stack
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">
-              Tools yang dipakai sehari-hari
-            </h2>
-          </div>
-          <p className="hidden max-w-xs text-sm leading-relaxed text-slate-400 md:block">
-            Minimal, cepat, fokus performa. Marquee infinite tanpa putus.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+            02 / Tech Stack
           </p>
+          <div className="h-px flex-1 bg-slate-800" />
+          <p className="hidden sm:block text-sm text-slate-500">Infinite scroll</p>
         </motion.div>
       </div>
 
-      <div className="space-y-3">
+      <div>
         <MarqueeRow items={TECH_STACK} />
         <MarqueeRow items={[...TECH_STACK].reverse()} reverse />
       </div>
