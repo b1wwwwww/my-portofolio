@@ -1,23 +1,21 @@
+import Hero from "@/components/Hero";
+import TechStack from "@/components/TechStack";
+import Projects from "@/components/Projects";
+import Certificates from "@/components/Certificates";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/layout/Navbar";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-slate-900 selection:bg-blue-500/30">
       <Navbar />
       <main>
-        <section id="home" className="h-screen flex items-center justify-center">
-          <p>Hero section — nanti kita isi</p>
-        </section>
-        <section id="about" className="h-screen flex items-center justify-center">
-          <p>About section</p>
-        </section>
-        <section id="projects" className="h-screen flex items-center justify-center">
-          <p>Projects section</p>
-        </section>
-        <section id="contact" className="h-screen flex items-center justify-center">
-          <p>Contact section</p>
-        </section>
+        <Hero />
+        <TechStack />
+        <Projects />
+        <Certificates />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
