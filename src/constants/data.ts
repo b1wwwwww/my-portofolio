@@ -1,7 +1,20 @@
 export const PROFILE = {
-  name: "Nama Developer",
+  name: "Nabil Yusra Azura Pratama",
   role: "Fullstack Developer",
-  bio: "Membangun solusi digital yang efisien, minimalis, dan berorientasi pada performa.",
+  bio: "Membangun solusi digital yang efisien, minimalis, dan berorientasi pada performa. Fokus pada Next.js, performa, dan detail UI yang rapi.",
+};
+
+export const ABOUT = {
+  title: "Tentang Saya",
+  paragraphs: [
+    "Saya Nabil Yusra Azura Pratama, Fullstack Developer yang suka bikin produk digital yang cepat, rapi, dan enak dipakai. Background di Next.js / React, Node.js, dan sedikit mobile dengan Kotlin & Java.",
+    "Di luar ngoding, saya senang eksplor desain minimal, micro-interaction halus, dan sistem yang scalable. Saat ini open untuk kolaborasi dan freelance.",
+  ],
+  highlights: [
+    { label: "Berbasis", value: "Indonesia — Remote Friendly" },
+    { label: "Fokus", value: "Web App • API • UI System" },
+    { label: "Status", value: "Available for work" },
+  ],
 };
 
 export const TECH_STACK = [

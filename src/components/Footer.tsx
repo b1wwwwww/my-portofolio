@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <div>
             <p className="text-sm font-semibold tracking-tight text-white">
-              Nama Developer
+              Nabil Yusra Azura Pratama
             </p>
             <p className="mt-1 text-sm text-slate-400">
               Fullstack Developer • Bangun produk minimal & cepat.
@@ -20,16 +20,16 @@ export default function Footer() {
             <a
               href="#"
               aria-label="GitHub"
-              className="rounded-full border border-slate-800 bg-slate-900 p-3 text-slate-300 hover:border-slate-700 hover:text-white transition-colors"
+              className="rounded-full border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300 hover:border-slate-700 hover:text-white transition-colors"
             >
-              <Github className="h-4 w-4" />
+              GitHub
             </a>
             <a
               href="#"
               aria-label="LinkedIn"
-              className="rounded-full border border-slate-800 bg-slate-900 p-3 text-slate-300 hover:border-slate-700 hover:text-white transition-colors"
+              className="rounded-full border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300 hover:border-slate-700 hover:text-white transition-colors"
             >
-              <Linkedin className="h-4 w-4" />
+              LinkedIn
             </a>
             <a
               href="mailto:hello@example.com"
@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 md:flex-row">
-          <span>© {new Date().getFullYear()} Nama Developer. Template dummy.</span>
+          <span>© {new Date().getFullYear()} Nabil Yusra Azura Pratama. Template dummy.</span>
           <span className="flex gap-4">
             <a href="#" className="hover:text-slate-300">GitHub</a>
             <a href="#" className="hover:text-slate-300">LinkedIn</a>

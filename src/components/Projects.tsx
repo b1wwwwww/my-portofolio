@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { PROJECTS } from "@/constants/data";
 
 type Project = (typeof PROJECTS)[number];
@@ -152,7 +152,7 @@ export default function Projects() {
                     href={active.github}
                     className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-700 transition-colors"
                   >
-                    <Github className="h-4 w-4" /> GitHub
+                    GitHub
                   </a>
                 </div>
               </div>
