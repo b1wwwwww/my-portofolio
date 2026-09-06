@@ -11,17 +11,17 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Nama Kamu — Fullstack Developer",
-  description: "Portofolio pribadi Nama Kamu, Fullstack Developer.",
+  title: "Nabil Yusra Azura Pratama — Fullstack Developer",
+  description: "Portofolio pribadi Nabil Yusra Azura Pratama.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} font-sans antialiased`}>
+    <html lang="id" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} font-sans antialiased`} suppressHydrationWarning>
         <div className="bg-spotlight" id="bg-spotlight" />
-        <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px')})` }} />
         {children}
+        <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px')})` }} />
       </body>
     </html>
   );
