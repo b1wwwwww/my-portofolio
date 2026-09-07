@@ -16,7 +16,8 @@
   --grid-dot: #1e293b;
   --point-blue: #38bdf8;
   --spotlight-opacity: 0.12;
-  --spotlight-hover-opacity: 0.6;
+  /* subtle by default, slightly stronger */
+  --spotlight-hover-opacity: 0.9;
   --glow-opacity: 0;
   --glow-hover-opacity: 1;
 }
@@ -28,7 +29,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: #f8fafc;
-  background-image: radial-gradient(rgba(30, 41, 59, 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(30, 41, 59, 0.26) 1px, transparent 1px);
   background-size: 22px 22px;
   background-position: 0 0;
   font-family: var(--font-sans), sans-serif;
@@ -36,10 +37,11 @@ body {
 
 /* Reusable subtle section grid (consistent across sections) */
 .section-grid {
-  background-image: radial-gradient(rgba(30, 41, 59, 0.18) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(30, 41, 59, 0.24) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: 0 0;
-  opacity: 0.16;
+  opacity: 0.24;
+  /* stronger so it's visible when not hovering */
   pointer-events: none;
 }
 
@@ -54,10 +56,26 @@ body {
   /* make global spotlight more subtle by default; increase on hover */
   opacity: var(--spotlight-opacity);
   transition: opacity 200ms cubic-bezier(.2, .9, .2, 1), mask-position 120ms linear;
+  mix-blend-mode: overlay;
+  /* blend with grid so default doesn't look flat */
   /* softer spotlight mask so edges blend */
   mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
   -webkit-mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
   will-change: mask-position, background-position;
+}
+
+/* faint base spotlight/grid always visible (subtle parallax background) */
+.bg-spotlight-base {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  opacity: 1;
+  mix-blend-mode: screen;
+  will-change: background-position;
 }
 
 .bg-glow {

@@ -19,10 +19,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} font-sans antialiased`} suppressHydrationWarning>
+        <div className="bg-spotlight-base" aria-hidden />
         <div className="bg-spotlight" aria-hidden />
         <div className="bg-glow" aria-hidden />
         {children}
-        <script dangerouslySetInnerHTML={{ __html: `let raf=0;document.addEventListener('mousemove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px');raf=0})},{passive:true})` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `let raf=0;document.addEventListener('mousemove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{const el=e.target;document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px');try{const overBg = el===document.body||el===document.documentElement||el.closest('.section-grid')||el.classList&&el.classList.contains('section-grid');document.documentElement.style.setProperty('--spotlight-opacity', overBg?0.28:0.06);}catch(err){}raf=0})},{passive:true})`,
+          }}
+        />
       </body>
     </html>
   );

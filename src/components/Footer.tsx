@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { PROFILE } from "@/constants/data";
 
 export default function Footer() {
   const [form, setForm] = useState({
@@ -26,9 +25,16 @@ export default function Footer() {
       id="contact"
       className="relative overflow-hidden bg-[#020b1d] px-6 py-20 text-slate-100 md:py-28"
     >
-      <div className="absolute inset-0 z-0 section-grid" />
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(148,163,184,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.14) 1px, transparent 1px)",
+          backgroundSize: "42px 42px",
+        }}
+      />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <div className="relative mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
         <div className="pt-6">
           <div className="mb-6 flex items-center gap-3 text-slate-200">
             <span className="h-px w-10 bg-slate-500" />
@@ -68,7 +74,7 @@ export default function Footer() {
 
           <div className="bg-[#02070d] px-6 py-5 font-mono text-[13px] leading-7 text-slate-200 sm:text-[15px]">
             <div className="mb-4 text-slate-200">
-              <span className="text-cyan-300">guest@{PROFILE.nickname}</span>
+              <span className="text-cyan-300">guest@b1wwwwww</span>
               <span className="text-slate-400">:~$</span>{" "}
               <span className="text-slate-200">sudo init contact --form</span>
             </div>
