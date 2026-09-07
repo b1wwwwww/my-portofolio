@@ -1,5 +1,6 @@
 export const PROFILE = {
   name: "Nabil Yusra Azura Pratama",
+  nickname: "b1wwwwww",
   role: "Fullstack Developer",
   bio: "Membangun solusi digital yang efisien, minimalis, dan berorientasi pada performa. Fokus pada Next.js, performa, dan detail UI yang rapi.",
 };

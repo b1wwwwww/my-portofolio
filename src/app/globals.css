@@ -15,6 +15,10 @@
   --bg-color: #0b1121;
   --grid-dot: #1e293b;
   --point-blue: #38bdf8;
+  --spotlight-opacity: 0.12;
+  --spotlight-hover-opacity: 0.6;
+  --glow-opacity: 0;
+  --glow-hover-opacity: 1;
 }
 
 html {
@@ -24,21 +28,55 @@ html {
 body {
   background-color: var(--bg-color);
   color: #f8fafc;
-  background-image: radial-gradient(rgba(30, 41, 59, 0.35) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(30, 41, 59, 0.22) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
   font-family: var(--font-sans), sans-serif;
+}
+
+/* Reusable subtle section grid (consistent across sections) */
+.section-grid {
+  background-image: radial-gradient(rgba(30, 41, 59, 0.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0;
+  opacity: 0.16;
+  pointer-events: none;
 }
 
 .bg-spotlight {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
   background-image: radial-gradient(var(--point-blue) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.08;
-  mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.4) 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+  background-size: 22px 22px;
+  background-position: calc(var(--mouse-x, 50vw) * 0.02) calc(var(--mouse-y, 50vh) * 0.02);
+  /* make global spotlight more subtle by default; increase on hover */
+  opacity: var(--spotlight-opacity);
+  transition: opacity 200ms cubic-bezier(.2,.9,.2,1), mask-position 120ms linear;
+  /* softer spotlight mask so edges blend */
+  mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
+  will-change: mask-position, background-position;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  background:
+    radial-gradient(560px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12), transparent 58%),
+    radial-gradient(760px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.08), transparent 62%);
+  opacity: var(--glow-opacity);
+  transition: opacity 220ms cubic-bezier(.2,.9,.2,1), background-position 120ms linear;
+  will-change: background-position;
+}
+
+/* on hover make a subtle glow highlight around cursor */
+html:hover {
+  --spotlight-opacity: var(--spotlight-hover-opacity);
+  --glow-opacity: var(--glow-hover-opacity);
 }
 
 .tilt-wrapper {

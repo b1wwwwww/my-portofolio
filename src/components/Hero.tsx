@@ -50,7 +50,9 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative flex min-h-[70vh] items-center bg-transparent pt-28 pb-16">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
+      {/* subtle unified grid behind hero */}
+      <div className="absolute inset-0 z-0 section-grid" />
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

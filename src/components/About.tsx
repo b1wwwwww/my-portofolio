@@ -6,9 +6,8 @@ import { ABOUT } from "@/constants/data";
 export default function About() {
   return (
     <section id="about" className="relative bg-slate-950 py-32 overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-15" 
-           style={{ backgroundImage: `linear-gradient(#1e293b 1px, transparent 1px), linear-gradient(90deg, #1e293b 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
-      />
+      {/* unified subtle grid background */}
+      <div className="absolute inset-0 z-0 section-grid" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 items-center">

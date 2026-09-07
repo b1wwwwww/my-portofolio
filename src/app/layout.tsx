@@ -19,9 +19,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${pressStart2P.variable} font-sans antialiased`} suppressHydrationWarning>
-        <div className="bg-spotlight" id="bg-spotlight" />
+        <div className="bg-spotlight" aria-hidden />
+        <div className="bg-glow" aria-hidden />
         {children}
-        <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px')})` }} />
+        <script dangerouslySetInnerHTML={{ __html: `let raf=0;document.addEventListener('mousemove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{document.documentElement.style.setProperty('--mouse-x',e.clientX+'px');document.documentElement.style.setProperty('--mouse-y',e.clientY+'px');raf=0})},{passive:true})` }} />
       </body>
     </html>
   );
