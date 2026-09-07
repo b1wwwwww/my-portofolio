@@ -53,7 +53,7 @@ body {
   background-position: calc(var(--mouse-x, 50vw) * 0.02) calc(var(--mouse-y, 50vh) * 0.02);
   /* make global spotlight more subtle by default; increase on hover */
   opacity: var(--spotlight-opacity);
-  transition: opacity 200ms cubic-bezier(.2,.9,.2,1), mask-position 120ms linear;
+  transition: opacity 200ms cubic-bezier(.2, .9, .2, 1), mask-position 120ms linear;
   /* softer spotlight mask so edges blend */
   mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
   -webkit-mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
@@ -69,7 +69,7 @@ body {
     radial-gradient(560px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12), transparent 58%),
     radial-gradient(760px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.08), transparent 62%);
   opacity: var(--glow-opacity);
-  transition: opacity 220ms cubic-bezier(.2,.9,.2,1), background-position 120ms linear;
+  transition: opacity 220ms cubic-bezier(.2, .9, .2, 1), background-position 120ms linear;
   will-change: background-position;
 }
 
