@@ -12,7 +12,7 @@ function MarqueeRow({
 }) {
   const duplicated = [...items, ...items, ...items, ...items];
   return (
-    <div className="relative flex overflow-hidden border-y border-slate-900 bg-slate-950">
+    <div className="relative flex overflow-hidden border-y border-emerald-900/30 bg-[#010504]">
       <motion.div
         className="flex shrink-0"
         animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
@@ -21,7 +21,7 @@ function MarqueeRow({
         {duplicated.map((tech, i) => (
           <span
             key={`${tech}-${i}`}
-            className="shrink-0 border-r border-slate-900 px-12 py-8 text-2xl font-bold tracking-tighter text-slate-800 hover:text-white transition-colors md:text-4xl"
+            className="shrink-0 border-r border-emerald-900/30 px-12 py-8 text-2xl font-bold tracking-tighter text-emerald-900 hover:text-emerald-400 transition-colors md:text-4xl"
           >
             {tech.toUpperCase()}
           </span>
@@ -33,7 +33,7 @@ function MarqueeRow({
 
 export default function TechStack() {
   return (
-    <section id="tech" className="bg-slate-950">
+    <section id="tech" className="bg-[#010504]">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -41,11 +41,11 @@ export default function TechStack() {
           viewport={{ once: true }}
           className="flex items-baseline gap-4"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
             02 / Tech Stack
           </p>
-          <div className="h-px flex-1 bg-slate-800" />
-          <p className="hidden sm:block text-sm text-slate-500">Infinite scroll</p>
+          <div className="h-px flex-1 bg-emerald-900/40" />
+          <p className="hidden sm:block text-sm text-emerald-100/40">Infinite scroll</p>
         </motion.div>
       </div>
 
