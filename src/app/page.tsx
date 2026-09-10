@@ -8,7 +8,7 @@ import Navbar from "@/components/layout/Navbar";
 
 export default function Home() {
   return (
-    <div className="bg-slate-950 selection:bg-blue-500/30 text-slate-200">
+    <div className="bg-[#010504] selection:bg-emerald-500/30 text-emerald-50">
       <Navbar />
       <main>
         <Hero />

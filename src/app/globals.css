@@ -1,23 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(240 10% 3.9%);
-  --color-primary: hsl(221 83% 53%);
-  --color-muted: hsl(240 4.8% 95.9%);
+  --color-background: hsl(160 30% 2%);
+  --color-foreground: hsl(160 5% 95%);
+  --color-primary: hsl(168 80% 50%);
+  --color-accent: hsl(45 90% 50%);
+  --color-muted: hsl(160 10% 15%);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-pixel: var(--font-pixel);
 }
 
 :root {
-  --bg-color: #0b1121;
-  --grid-dot: #1e293b;
-  --point-blue: #38bdf8;
+  --bg-color: #010504;
+  --grid-dot: #064e3b;
+  --point-emerald: #10b981;
   --spotlight-opacity: 0.12;
-  /* subtle by default, slightly stronger */
-  --spotlight-hover-opacity: 0.9;
+  --spotlight-hover-opacity: 0.7;
   --glow-opacity: 0;
   --glow-hover-opacity: 1;
 }
@@ -28,20 +27,18 @@ html {
 
 body {
   background-color: var(--bg-color);
-  color: #f8fafc;
-  background-image: radial-gradient(rgba(30, 41, 59, 0.26) 1px, transparent 1px);
-  background-size: 22px 22px;
+  color: #ecfdf5;
+  background-image: radial-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
   background-position: 0 0;
   font-family: var(--font-sans), sans-serif;
 }
 
-/* Reusable subtle section grid (consistent across sections) */
 .section-grid {
-  background-image: radial-gradient(rgba(30, 41, 59, 0.24) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
   background-position: 0 0;
-  opacity: 0.24;
-  /* stronger so it's visible when not hovering */
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -50,32 +47,23 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 5;
-  background-image: radial-gradient(var(--point-blue) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(var(--point-emerald) 1px, transparent 1px);
+  background-size: 24px 24px;
   background-position: calc(var(--mouse-x, 50vw) * 0.02) calc(var(--mouse-y, 50vh) * 0.02);
-  /* make global spotlight more subtle by default; increase on hover */
   opacity: var(--spotlight-opacity);
-  transition: opacity 200ms cubic-bezier(.2, .9, .2, 1), mask-position 120ms linear;
+  transition: opacity 300ms ease-out;
   mix-blend-mode: overlay;
-  /* blend with grid so default doesn't look flat */
-  /* softer spotlight mask so edges blend */
-  mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
-  -webkit-mask-image: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 75%);
-  will-change: mask-position, background-position;
+  mask-image: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 80%);
 }
 
-/* faint base spotlight/grid always visible (subtle parallax background) */
 .bg-spotlight-base {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 4;
-  background-image: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: 0 0;
+  background-image: radial-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
   opacity: 1;
-  mix-blend-mode: screen;
-  will-change: background-position;
 }
 
 .bg-glow {
@@ -84,11 +72,10 @@ body {
   pointer-events: none;
   z-index: 6;
   background:
-    radial-gradient(560px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12), transparent 58%),
-    radial-gradient(760px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.08), transparent 62%);
+    radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.08), transparent 60%),
+    radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.04), transparent 70%);
   opacity: var(--glow-opacity);
-  transition: opacity 220ms cubic-bezier(.2, .9, .2, 1), background-position 120ms linear;
-  will-change: background-position;
+  transition: opacity 400ms ease-out;
 }
 
 /* on hover make a subtle glow highlight around cursor */
@@ -106,14 +93,14 @@ html:hover {
 }
 
 .code-wrapper {
-  background: linear-gradient(135deg, #f472b6, #38bdf8, #facc15);
+  background: linear-gradient(135deg, #10b981, #f59e0b, #14b8a6);
   padding: 2px;
   border-radius: 12px;
   transform: translateZ(30px);
 }
 
 .code-inner {
-  background-color: #0f172a;
+  background-color: #022c22;
   padding: 2rem;
   border-radius: 10px;
   font-family: var(--font-mono), monospace;
