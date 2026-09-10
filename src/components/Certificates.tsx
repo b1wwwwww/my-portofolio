@@ -5,7 +5,7 @@ import { CERTIFICATES } from "@/constants/data";
 
 export default function Certificates() {
   return (
-    <section id="certificates" className="bg-slate-900 py-20">
+    <section id="certificates" className="bg-[#010504] py-20">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -14,7 +14,7 @@ export default function Certificates() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
             Certificates
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">
@@ -30,13 +30,13 @@ export default function Certificates() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="rounded-2xl border border-slate-800 bg-slate-800/40 p-6 backdrop-blur"
+              className="rounded-2xl border border-emerald-900/40 bg-emerald-950/30 p-6 backdrop-blur"
             >
-              <div className="mb-4 text-xs font-semibold text-blue-400">
+              <div className="mb-4 text-xs font-semibold text-emerald-400">
                 {cert.date}
               </div>
               <h3 className="font-semibold text-white">{cert.title}</h3>
-              <p className="mt-1 text-sm text-slate-400">{cert.provider}</p>
+              <p className="mt-1 text-sm text-emerald-100/50">{cert.provider}</p>
             </motion.div>
           ))}
         </div>
