@@ -1,11 +1,13 @@
 "use client";
 
-import { Terminal, Menu, X, Command, Search } from "lucide-react";
+import { Terminal, Menu, X, LayoutGrid } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLayout } from "@/context/LayoutContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { mode, toggleMode } = useLayout();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -32,16 +34,12 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Command Palette Button */}
-          <button className="flex items-center gap-4 px-4 py-2 rounded-xl bg-emerald-950/30 border border-emerald-800/30 text-emerald-100/40 hover:border-emerald-500/40 transition-all text-xs font-medium group">
-            <div className="flex items-center gap-2">
-              <Search className="h-3.5 w-3.5 group-hover:text-emerald-400 transition-colors" />
-              <span>Cari...</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-900/50 border border-emerald-700/50 text-[10px]">
-              <Command className="h-2.5 w-2.5" />
-              <span>K</span>
-            </div>
+          <button
+            onClick={toggleMode}
+            className="hidden md:flex items-center justify-center p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all"
+            title={mode === "top" ? "Ubah ke mode samping" : "Ubah ke mode atas"}
+          >
+            <LayoutGrid className="h-5 w-5" />
           </button>
 
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-emerald-400">

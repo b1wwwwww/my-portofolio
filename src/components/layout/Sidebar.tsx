@@ -1,7 +1,9 @@
 "use client";
 
-import { Home, User, Briefcase, LayoutGrid, Award, MessageSquare, Terminal } from "lucide-react";
+import { Home, User, Briefcase, LayoutGrid, Award, MessageSquare, Terminal, Rows3 } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useLayout } from "@/context/LayoutContext";
 
 const MENU_ITEMS = [
   { icon: Home, label: "Beranda", href: "#home" },
@@ -13,6 +15,16 @@ const MENU_ITEMS = [
 ];
 
 export default function Sidebar() {
+  const { mode, toggleMode } = useLayout();
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+  }, []);
+
+  if (!hydrated || mode !== "side") return null;
+
   return (
     <aside className="fixed left-0 top-0 hidden h-screen w-64 flex-col border-r border-emerald-900/20 bg-[#010504]/50 backdrop-blur-xl lg:flex z-[60]">
       <div className="p-8">
@@ -45,6 +57,13 @@ export default function Sidebar() {
           <a href="#" target="_blank" className="text-emerald-100/30 hover:text-emerald-400 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.339 17.338V10.66H6.032v6.678h2.307zM7.186 9.5a1.34 1.34 0 110-2.68 1.34 1.34 0 010 2.68zM18 17.338v-3.63c0-1.956-1.046-2.86-2.438-2.86-1.118 0-1.61.62-1.886 1.058v-0.9H11.23c.03.59 0 6.334 0 6.334h2.306v-3.534c0-.188.013-.376.07-.51.153-.376.503-.768 1.09-.768.77 0 1.078.58 1.078 1.431v3.381H18z" /></svg>
           </a>
+          <button
+            onClick={toggleMode}
+            className="ml-auto p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all"
+            title="Ubah ke mode atas"
+          >
+            <Rows3 className="h-4 w-4" />
+          </button>
         </div>
         <p className="mt-4 text-[10px] text-emerald-100/20 uppercase tracking-widest font-mono">
           © 2026 NABIL YUSRA
