@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import TechStack from "@/components/TechStack";
+import SkillsSection from "@/components/SkillsSection";
 import Projects from "@/components/Projects";
 import Dashboard from "@/components/Dashboard";
 import Certificates from "@/components/Certificates";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <About />
         <TechStack />
+        <SkillsSection />
         <Projects />
         <Dashboard />
         <Certificates />
