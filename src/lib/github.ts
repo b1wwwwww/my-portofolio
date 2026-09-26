@@ -1,3 +1,13 @@
+export interface GithubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+}
+
 export async function getGithubProfile() {
   try {
     const headers: HeadersInit = {};
@@ -18,7 +28,7 @@ export async function getGithubProfile() {
   }
 }
 
-export async function getGithubRepos() {
+export async function getGithubRepos(): Promise<GithubRepo[]> {
   try {
     const headers: HeadersInit = {};
     if (process.env.GITHUB_TOKEN) {

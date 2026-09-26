@@ -118,9 +118,9 @@ export default function Footer() {
             </div>
 
             <div className="mt-7 text-sm text-emerald-100/50">
-              <span className="text-emerald-400">/*</span>{" "}
+              <span className="text-emerald-400">{"/*"}</span>{" "}
               <span className="text-emerald-100/50">Ready to deploy your message.</span>{" "}
-              <span className="text-emerald-400">*/</span>
+              <span className="text-emerald-400">{"*/"}</span>
             </div>
 
             <button

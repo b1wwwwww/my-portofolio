@@ -2,7 +2,7 @@
 
 import { Home, User, Briefcase, LayoutGrid, Award, MessageSquare, Terminal, Rows3 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useLayout } from "@/context/LayoutContext";
 
 const MENU_ITEMS = [
@@ -18,9 +18,8 @@ export default function Sidebar() {
   const { mode, toggleMode } = useLayout();
   const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHydrated(true);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, []);
 
   if (!hydrated || mode !== "side") return null;

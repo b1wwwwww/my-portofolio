@@ -1,4 +1,5 @@
-import { getGithubProfile, getGithubRepos } from "@/lib/github";
+import Image from "next/image";
+import { getGithubProfile, getGithubRepos, type GithubRepo } from "@/lib/github";
 import { Star, GitFork, BookMarked, ArrowUpRight } from "lucide-react";
 
 export default async function Dashboard() {
@@ -26,7 +27,7 @@ export default async function Dashboard() {
           <div className="md:col-span-2 rounded-3xl border border-emerald-900/30 bg-emerald-950/20 p-8 flex flex-col justify-between backdrop-blur-sm group hover:border-emerald-500/30 transition-colors">
             <div className="flex justify-between items-start">
               <div className="h-14 w-14 rounded-2xl overflow-hidden border-2 border-emerald-500/20">
-                <img src={profile.avatar_url} alt={profile.name} className="h-full w-full object-cover" />
+                <Image src={profile.avatar_url} alt={profile.name} width={56} height={56} className="h-full w-full object-cover" />
               </div>
               <a href={profile.html_url} target="_blank" className="p-2 rounded-full bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.166 6.84 9.49.5.09.68-.216.68-.48 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.893 1.53 2.341 1.088 2.91.833.09-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.944 0-1.09.39-1.98 1.03-2.676-.103-.254-.447-1.27.098-2.646 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.91-1.296 2.75-1.026 2.75-1.026.546 1.376.202 2.392.1 2.646.64.696 1.03 1.586 1.03 2.676 0 3.842-2.337 4.687-4.565 4.935.359.31.679.92.679 1.852 0 1.336-.012 2.416-.012 2.747 0 .266.18.575.688.478A10.013 10.013 0 0022 12c0-5.52-4.48-10-10-10z" /></svg>
@@ -64,12 +65,14 @@ export default async function Dashboard() {
               <h4 className="text-sm font-semibold text-emerald-100/60 uppercase tracking-widest">Contributions</h4>
             </div>
             <div className="aspect-[2/1] w-full bg-emerald-950/50 rounded-2xl flex items-center justify-center overflow-hidden">
-               <img 
-                 src={`https://ghchart.rshah.org/10b981/${profile.login}`} 
-                 alt="GitHub Contributions" 
-                 className="w-full h-auto px-4 opacity-80 hover:opacity-100 transition-opacity invert hue-rotate-[140deg] brightness-125"
-               />
-            </div>
+               <Image 
+                  src={`https://ghchart.rshah.org/10b981/${profile.login}`} 
+                  alt="GitHub Contributions"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto px-4 opacity-80 hover:opacity-100 transition-opacity invert hue-rotate-[140deg] brightness-125"
+                />
+             </div>
             <p className="mt-4 text-[11px] text-emerald-100/30 text-center font-mono italic">
               Real-time contribution activity from GitHub.
             </p>

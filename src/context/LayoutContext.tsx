@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useLayoutEffect } from "react";
 
 type LayoutMode = "top" | "side";
 
@@ -14,7 +14,7 @@ const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 export function LayoutProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<LayoutMode>("top");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const saved = localStorage.getItem("layout-mode") as LayoutMode | null;
     if (saved === "top" || saved === "side") setMode(saved);
   }, []);
