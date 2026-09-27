@@ -51,6 +51,12 @@ export const PROJECTS = [
   },
 ];
 
+export const ACHIEVEMENTS = [
+  { id: 1, title: "AWS Certified Solutions Architect", provider: "AWS", date: "2024" },
+  { id: 2, title: "Google Cloud Associate Cloud Engineer", provider: "Google Cloud", date: "2023" },
+  { id: 3, title: "Oracle Certified Associate Java Programmer", provider: "Oracle", date: "2023" },
+];
+
 export const CERTIFICATES = [
   { id: 1, title: "Sertifikat AWS Certified", provider: "AWS", date: "2024" },
   { id: 2, title: "Google Cloud Associate", provider: "Google", date: "2023" },

@@ -12,7 +12,7 @@ function MarqueeRow({
 }) {
   const duplicated = [...items, ...items, ...items, ...items];
   return (
-    <div className="relative flex overflow-hidden border-y border-emerald-900/30 bg-[#010504]">
+    <div className="relative flex overflow-hidden border-y border-slate-800/50 bg-slate-900/10">
       <motion.div
         className="flex shrink-0"
         animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
@@ -21,7 +21,7 @@ function MarqueeRow({
         {duplicated.map((tech, i) => (
           <span
             key={`${tech}-${i}`}
-            className="shrink-0 border-r border-emerald-900/30 px-12 py-8 text-2xl font-bold tracking-tighter text-emerald-900 hover:text-emerald-400 transition-colors md:text-4xl"
+            className="shrink-0 border-r border-slate-800/50 px-12 py-8 text-2xl font-bold tracking-tighter text-slate-700 hover:text-teal-400 transition-colors md:text-4xl"
           >
             {tech.toUpperCase()}
           </span>
@@ -33,23 +33,22 @@ function MarqueeRow({
 
 export default function TechStack() {
   return (
-    <section id="tech" className="bg-[#010504]">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <section id="tech" className="py-16">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex items-baseline gap-4"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-            02 / Tech Stack
+          <p className="text-xs font-semibold uppercase tracking-widest text-teal-400">
+            02 — Tech Stack
           </p>
-          <div className="h-px flex-1 bg-emerald-900/40" />
-          <p className="hidden sm:block text-sm text-emerald-100/40">Infinite scroll</p>
+          <div className="h-px flex-1 bg-slate-800/50" />
         </motion.div>
       </div>
 
-      <div>
+      <div className="space-y-0">
         <MarqueeRow items={TECH_STACK} />
         <MarqueeRow items={[...TECH_STACK].reverse()} reverse />
       </div>

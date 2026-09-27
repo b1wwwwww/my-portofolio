@@ -12,11 +12,12 @@ interface LayoutContextType {
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export function LayoutProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<LayoutMode>("top");
+  const [mode, setMode] = useState<LayoutMode>("side");
 
   useLayoutEffect(() => {
     const saved = localStorage.getItem("layout-mode") as LayoutMode | null;
     if (saved === "top" || saved === "side") setMode(saved);
+    else setMode("side");
   }, []);
 
   const toggleMode = () => {

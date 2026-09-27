@@ -5,53 +5,50 @@ import { ABOUT } from "@/constants/data";
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-[#010504] py-32 overflow-hidden">
-      <div className="absolute inset-0 z-0 section-grid" />
-
+    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <div className="grid gap-16 md:grid-cols-2 items-center">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-              01 / {ABOUT.title}
+            <p className="text-xs font-semibold uppercase tracking-widest text-teal-400 mb-4">
+              01 — {ABOUT.title}
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
-              Always building, <br /> always learning.
+            <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl mb-8">
+              Always building, always learning.
             </h2>
-            <div className="mt-10 space-y-6 text-lg leading-relaxed text-emerald-100/70">
+            <div className="space-y-4 text-base leading-relaxed text-slate-400">
               {ABOUT.paragraphs.map((p, i) => (
-                <p key={i} className={i === 0 ? "text-emerald-100" : ""}>
+                <p key={i} className={i === 0 ? "text-slate-300" : ""}>
                   {p}
                 </p>
               ))}
             </div>
+            
+            <div className="mt-8 space-y-3 pt-8 border-t border-slate-700">
+              {ABOUT.highlights.map((h, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <span className="text-sm font-semibold text-slate-500">{h.label}</span>
+                  <span className="text-sm text-slate-300">{h.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="relative flex justify-center">
-            <motion.div
-              initial={{ rotate: -6, scale: 0.9, opacity: 0 }}
-              whileInView={{ rotate: -3, scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              whileHover={{ rotate: 0, scale: 1.05 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl border-4 border-emerald-900/50 bg-emerald-950/40 shadow-[20px_20px_60px_rgba(0,0,0,0.5)]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent" />
-              <div className="flex h-full items-center justify-center text-emerald-500/40 font-mono text-sm uppercase">
-                [ Nabil Yusra Azura ]
-              </div>
-              
-              <div className="absolute top-4 left-4 h-2 w-2 rounded-full bg-emerald-700" />
-              <div className="absolute top-4 right-4 h-2 w-2 rounded-full bg-emerald-700" />
-            </motion.div>
-            
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 h-24 w-24 rounded-2xl bg-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
-            />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative aspect-square w-full max-w-sm mx-auto"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-700/20 to-slate-800/20 rounded-2xl" />
+            <div className="relative h-full w-full rounded-2xl border border-slate-700/50 bg-slate-800/10 flex items-center justify-center overflow-hidden">
+              <div className="text-slate-600 font-mono text-sm">[ Reserved for photo ]</div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
+
+

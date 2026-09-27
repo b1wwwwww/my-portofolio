@@ -12,13 +12,7 @@
 }
 
 :root {
-  --bg-color: #010504;
-  --grid-dot: #064e3b;
-  --point-emerald: #10b981;
-  --spotlight-opacity: 0.12;
-  --spotlight-hover-opacity: 0.7;
-  --glow-opacity: 0;
-  --glow-hover-opacity: 1;
+  --bg-color: #030712;
 }
 
 html {
@@ -27,99 +21,6 @@ html {
 
 body {
   background-color: var(--bg-color);
-  color: #ecfdf5;
-  background-image: radial-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: 0 0;
+  color: #f8fafc;
   font-family: var(--font-sans), sans-serif;
-}
-
-.section-grid {
-  background-image: radial-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: 0 0;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.bg-spotlight {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  background-image: radial-gradient(var(--point-emerald) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: calc(var(--mouse-x, 50vw) * 0.02) calc(var(--mouse-y, 50vh) * 0.02);
-  opacity: var(--spotlight-opacity);
-  transition: opacity 300ms ease-out;
-  mix-blend-mode: overlay;
-  mask-image: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 80%);
-}
-
-.bg-spotlight-base {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 4;
-  background-image: radial-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 1;
-}
-
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 6;
-  background:
-    radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.08), transparent 60%),
-    radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.04), transparent 70%);
-  opacity: var(--glow-opacity);
-  transition: opacity 400ms ease-out;
-}
-
-/* on hover make a subtle glow highlight around cursor */
-html:hover {
-  --spotlight-opacity: var(--spotlight-hover-opacity);
-  --glow-opacity: var(--glow-hover-opacity);
-}
-
-.tilt-wrapper {
-  position: relative;
-  border-radius: 12px;
-  transform-style: preserve-3d;
-  will-change: transform;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.code-wrapper {
-  background: linear-gradient(135deg, #10b981, #f59e0b, #14b8a6);
-  padding: 2px;
-  border-radius: 12px;
-  transform: translateZ(30px);
-}
-
-.code-inner {
-  background-color: #022c22;
-  padding: 2rem;
-  border-radius: 10px;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.tilt-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  pointer-events: none;
-  z-index: 20;
-  mix-blend-mode: overlay;
-  transition: opacity 0.3s ease;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .bg-spotlight {
-    display: none !important;
-  }
 }
