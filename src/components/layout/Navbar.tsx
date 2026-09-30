@@ -34,14 +34,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleMode}
-            className="hidden md:flex items-center justify-center p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 hover:bg-teal-500/20 hover:border-teal-500/40 transition-all"
-            title={mode === "top" ? "Ubah ke mode samping" : "Ubah ke mode atas"}
-          >
-            <LayoutGrid className="h-5 w-5" />
-          </button>
-
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 text-teal-400">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

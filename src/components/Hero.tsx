@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { PROFILE } from "@/constants/data";
 
 export default function Hero() {
@@ -47,11 +48,17 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative aspect-square w-full max-w-sm mx-auto"
+            className="relative aspect-square w-full max-w-sm mx-auto group cursor-pointer"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-slate-700/20 to-slate-800/20 rounded-2xl" />
             <div className="relative h-full w-full rounded-2xl border border-slate-700/50 bg-slate-800/10 flex items-center justify-center overflow-hidden">
-              <div className="text-slate-600 font-mono text-sm">[ foto profil ]</div>
+              <Image
+                src="/images/foto-saya.webp"
+                alt={PROFILE.name}
+                fill
+                className="object-cover filter blur-sm group-hover:blur-none group-hover:scale-105 transition-all duration-500 ease-out"
+                priority
+              />
             </div>
           </motion.div>
       </div>
