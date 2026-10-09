@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getGithubProfile, getGithubRepos, type GithubRepo } from "@/lib/github";
 import { getGithubContributions, transformContributionData } from "@/lib/contributions";
 import { ContributionSkylineWrapper } from "@/components/ContributionSkylineWrapper";
-import { Star, GitFork, BookMarked, ArrowUpRight } from "lucide-react";
+import { BookMarked, ArrowUpRight, Star, GitFork } from "lucide-react";
 
 export default async function Dashboard() {
   const profile = await getGithubProfile();
