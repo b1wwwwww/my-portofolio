@@ -49,6 +49,24 @@ export async function getGithubContributions(username: string) {
   }
 }
 
+export function transformContributionData(calendar: any) {
+  if (!calendar || !calendar.weeks) return [];
+  
+  const weeks = calendar.weeks || [];
+  const contributions = [];
+  
+  for (const week of weeks) {
+    for (const day of week.contributionDays || []) {
+      contributions.push({
+        date: day.date,
+        count: day.contributionCount
+      });
+    }
+  }
+  
+  return contributions;
+}
+
 export function renderContributionSVG(calendar: any) {
   if (!calendar) return null;
 

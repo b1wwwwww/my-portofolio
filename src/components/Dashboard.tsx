@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getGithubProfile, getGithubRepos, type GithubRepo } from "@/lib/github";
-import { getGithubContributions, renderContributionSVG } from "@/lib/contributions";
+import { getGithubContributions, transformContributionData } from "@/lib/contributions";
+import { ContributionSkylineWrapper } from "@/components/ContributionSkylineWrapper";
 import { Star, GitFork, BookMarked, ArrowUpRight } from "lucide-react";
 
 export default async function Dashboard() {
@@ -10,7 +11,7 @@ export default async function Dashboard() {
 
   if (!profile) return null;
 
-  const contributionSVG = contributions ? renderContributionSVG(contributions) : null;
+  const contributionData = contributions ? transformContributionData(contributions) : null;
 
   return (
     <section id="dashboard" className="relative py-24 md:py-32 overflow-hidden">
@@ -25,6 +26,7 @@ export default async function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          {/* Profile Card - Takes 2 columns, spanning 1 row */}
           <div className="md:col-span-2 rounded-xl border border-slate-700/50 bg-slate-800/20 p-6 md:p-8 backdrop-blur-sm group hover:border-slate-600/70 transition-colors">
             <div className="flex justify-between items-start">
               <div className="h-14 w-14 rounded-lg overflow-hidden border border-slate-600/50">
@@ -59,47 +61,49 @@ export default async function Dashboard() {
             </div>
           </div>
 
-          <div className="md:col-span-2 rounded-xl border border-slate-700/50 bg-slate-800/20 p-6 md:p-8 backdrop-blur-sm group hover:border-slate-600/70 transition-colors">
+          {/* Repos Grid - Takes 2 columns, acts as a 2x2 grid for 4 repos */}
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {repos.slice(0, 4).map((repo: any) => (
+              <a 
+                key={repo.id} 
+                href={repo.html_url} 
+                target="_blank"
+                className="rounded-xl border border-slate-700/50 bg-slate-800/20 p-5 backdrop-blur-sm group hover:bg-teal-500/10 hover:border-teal-500/50 transition-all duration-300"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <BookMarked className="h-4 w-4 text-slate-500 group-hover:text-teal-400 transition-colors" />
+                  <ArrowUpRight className="h-4 w-4 text-slate-600 group-hover:text-teal-400 transition-colors" />
+                </div>
+                <h4 className="font-semibold text-white group-hover:text-teal-400 transition-colors truncate text-sm">{repo.name}</h4>
+                <p className="mt-2 text-xs text-slate-500 group-hover:text-slate-400 line-clamp-2 transition-colors h-7">
+                  {repo.description || "No description provided."}
+                </p>
+                <div className="mt-4 flex items-center gap-3 text-xs text-slate-500 group-hover:text-teal-400 transition-colors">
+                  <div className="flex items-center gap-1">
+                    <Star className="h-3 w-3" />
+                    {repo.stargazers_count}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <GitFork className="h-3 w-3" />
+                    {repo.forks_count}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Contributions - Takes full width */}
+          <div className="md:col-span-4 rounded-xl border border-slate-700/50 bg-slate-800/20 p-6 md:p-8 backdrop-blur-sm group hover:border-slate-600/70 transition-colors">
             <div className="flex items-center gap-2 mb-6">
               <BookMarked className="h-4 w-4 text-teal-400 shrink-0" />
               <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-widest whitespace-nowrap">Contributions</h4>
             </div>
-            {contributionSVG ? (
-              <div className="w-full h-auto">
-                <div dangerouslySetInnerHTML={{ __html: contributionSVG }} />
-              </div>
+            {contributionData ? (
+              <ContributionSkylineWrapper data={contributionData} />
             ) : (
               <p className="text-sm text-slate-500">Unable to load contribution chart</p>
             )}
           </div>
-
-          {repos.slice(0, 4).map((repo: any) => (
-            <a 
-              key={repo.id} 
-              href={repo.html_url} 
-              target="_blank"
-              className="rounded-xl border border-slate-700/50 bg-slate-800/20 p-5 backdrop-blur-sm group hover:bg-teal-500/10 hover:border-teal-500/50 transition-all duration-300"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <BookMarked className="h-4 w-4 text-slate-500 group-hover:text-teal-400 transition-colors" />
-                <ArrowUpRight className="h-4 w-4 text-slate-600 group-hover:text-teal-400 transition-colors" />
-              </div>
-              <h4 className="font-semibold text-white group-hover:text-teal-400 transition-colors truncate text-sm">{repo.name}</h4>
-              <p className="mt-2 text-xs text-slate-500 group-hover:text-slate-400 line-clamp-2 transition-colors h-7">
-                {repo.description || "No description provided."}
-              </p>
-              <div className="mt-4 flex items-center gap-3 text-xs text-slate-500 group-hover:text-teal-400 transition-colors">
-                <div className="flex items-center gap-1">
-                  <Star className="h-3 w-3" />
-                  {repo.stargazers_count}
-                </div>
-                <div className="flex items-center gap-1">
-                  <GitFork className="h-3 w-3" />
-                  {repo.forks_count}
-                </div>
-              </div>
-            </a>
-          ))}
         </div>
       </div>
     </section>
