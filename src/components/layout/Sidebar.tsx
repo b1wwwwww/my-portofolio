@@ -4,6 +4,7 @@ import { Home, User, Briefcase, LayoutGrid, Award, MessageSquare, Terminal, Chev
 import Link from "next/link";
 import { useState, useLayoutEffect } from "react";
 import { useLayout } from "@/context/LayoutContext";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
 const MENU_ITEMS = [
   { icon: Home, label: "Beranda", href: "#home" },
@@ -15,9 +16,8 @@ const MENU_ITEMS = [
 ];
 
 export default function Sidebar() {
-  const { mode } = useLayout();
+  const { mode, isExpanded, toggleExpanded } = useLayout();
   const [hydrated, setHydrated] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(true);
 
   useLayoutEffect(() => {
     setHydrated(true);
@@ -44,7 +44,7 @@ export default function Sidebar() {
           </Link>
         )}
         <button
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={() => toggleExpanded()}
           className="p-1.5 rounded-lg text-teal-400 hover:bg-teal-500/10 transition-all"
           title={isExpanded ? "Collapse" : "Expand"}
         >
@@ -53,6 +53,9 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 px-4 space-y-2 py-4">
+        <div className={`mb-4 flex ${isExpanded ? "justify-start px-4" : "justify-center"}`}>
+          <ThemeSwitcher />
+        </div>
         {MENU_ITEMS.map((item) => (
           <a
             key={item.href}

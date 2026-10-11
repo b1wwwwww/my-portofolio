@@ -1180,9 +1180,9 @@ export default function ContributionSkyline({
       ref={rootRef}
       className={"relative w-full rounded-xl border p-4 font-sans sm:p-5 " + className}
       style={{
-        background: "var(--color-background, #ffffff)",
-        color: "var(--color-foreground, #171717)",
-        borderColor: "var(--color-border, #e5e5e5)",
+        background: "hsl(var(--card))",
+        color: "hsl(var(--foreground))",
+        borderColor: "hsl(var(--border))",
       }}
     >
       <header className="mb-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
@@ -1198,13 +1198,13 @@ export default function ContributionSkyline({
             role="group"
             aria-label="Chart view"
             className="relative inline-flex rounded-md border p-0.5"
-            style={{ borderColor: "var(--color-border, #e5e5e5)" }}
+            style={{ borderColor: "hsl(var(--border))" }}
           >
             <span
               aria-hidden="true"
               className="absolute top-0.5 bottom-0.5 left-0.5 w-8 rounded transition-transform duration-500 motion-reduce:transition-none"
               style={{
-                background: "var(--color-foreground, #171717)",
+                background: "hsl(var(--foreground))",
                 transform: is3d ? "translateX(100%)" : "translateX(0)",
                 transitionTimingFunction: ease,
               }}
@@ -1219,8 +1219,8 @@ export default function ContributionSkyline({
                 onClick={() => setView(v)}
                 className="relative z-10 grid h-7 w-8 cursor-pointer place-items-center rounded border-0 bg-transparent p-0 transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none"
                 style={{
-                  color: view === v ? "var(--color-background, #ffffff)" : MUTED,
-                  outlineColor: "var(--color-foreground, #171717)",
+                  color: view === v ? "hsl(var(--foreground))" : MUTED,
+                  outlineColor: "hsl(var(--foreground))",
                 }}
               >
                 {v === "2d" ? <GridIcon /> : <CubeIcon />}
@@ -1230,12 +1230,12 @@ export default function ContributionSkyline({
         )}
       </header>
 
-      <div className="relative rounded-lg border" style={{ borderColor: "var(--color-border, #e5e5e5)" }}>
+      <div className="relative rounded-lg border" style={{ borderColor: "hsl(var(--border))" }}>
         <div className="relative px-3 pt-3 sm:px-4 sm:pt-4">
           <div
             ref={stageRef}
             className="relative w-full overflow-hidden rounded-md outline-offset-4 has-[:focus-visible]:outline-2"
-            style={{ height: 150, outlineColor: "var(--color-foreground, #171717)" }}
+            style={{ height: 150, outlineColor: "hsl(var(--foreground))" }}
           >
             <canvas
               ref={canvasRef}
@@ -1290,8 +1290,8 @@ export default function ContributionSkyline({
             className="pointer-events-none absolute top-3 left-3 z-20 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[12px] leading-none shadow-lg transition-opacity duration-150 sm:top-4 sm:left-4 motion-reduce:transition-none"
             style={{
               opacity: active >= 0 ? 1 : 0,
-              background: "var(--color-foreground, #171717)",
-              color: "var(--color-background, #ffffff)",
+              background: "hsl(var(--foreground))",
+              color: "hsl(var(--card))",
             }}
           >
             {active >= 0 && model.cells[active] ? (
@@ -1312,7 +1312,7 @@ export default function ContributionSkyline({
                 marginLeft: -5,
                 borderLeft: "5px solid transparent",
                 borderRight: "5px solid transparent",
-                borderTop: "5px solid var(--color-foreground, #171717)",
+                borderTop: "5px solid hsl(var(--foreground))",
               }}
             />
           </div>
