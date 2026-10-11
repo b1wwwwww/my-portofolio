@@ -28,9 +28,7 @@ export default function Navbar() {
 
         {/* Desktop Title / Breadcrumb */}
         <div className="hidden lg:flex items-center gap-2 text-sm font-medium text-teal-100/40">
-          <span className="hover:text-teal-400 transition-colors cursor-default underline decoration-teal-500/20 underline-offset-4">ID</span>
-          <span className="text-teal-900">/</span>
-          <span className="text-teal-100/80 italic">Portofolio</span>
+          {/* Removed the ID/Portofolio text */}
         </div>
 
         <div className="flex items-center gap-3">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { LayoutProvider } from "@/context/LayoutContext";
-import Sidebar from "@/components/layout/Sidebar";
+import LayoutSwitcher from "@/components/layout/LayoutSwitcher";
 import MainWrapper from "@/components/layout/MainWrapper";
 import "./globals.css";
 
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased bg-slate-950 dark:bg-slate-950 text-slate-100 dark:text-slate-100`} suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased bg-slate-950 dark:bg-slate-950 text-slate-100 dark:text-slate-100 flex flex-col min-h-screen`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="theme-mode">
           <LayoutProvider>
-            <Sidebar />
+            <LayoutSwitcher />
             <MainWrapper>
               {children}
             </MainWrapper>
